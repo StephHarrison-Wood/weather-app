@@ -43,16 +43,16 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-function handleSubmit(event) {
-  event.preventDefult();
-  let cityInputElement = document.querySelector("#city-input");
-  search(cityInputElement.value);
-}
-
 function search(city) {
   let apiKey = "b6f22d190d1b4915f58b50eef956214d";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefult();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
 }
 
 let form = document.querySelector("#search-form");
